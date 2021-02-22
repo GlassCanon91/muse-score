@@ -1,0 +1,15 @@
+{%extends "skeleton.html" %} 
+{%block content%}
+
+<h4>{{name_piece}} </h4>
+<h4>{{pages_number}} </h4>
+
+<!--<button id= "pdf" type="button" method='POST'>PDF download</button>
+<button id= "mp3" type="button" method='POST'>MIDI download</button>
+<button id= "midi" type="button" method='POST'>MP3 download</button>-->
+
+<p><form method='POST'id= "pdf" ><input type="submit" name="download_button" value="PDF download"></form></p>
+<p><form method='POST' id= "mp3" ><input type="submit" name="download_button" value="MIDI download"></form></p>
+<p><form method='POST' id= "midi"><input type="submit" name="download_button" value="MP3 download"></form></p>
+
+{% endblock %}

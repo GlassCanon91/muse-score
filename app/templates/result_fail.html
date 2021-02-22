@@ -1,0 +1,10 @@
+{%extends "skeleton.html" %} 
+{%block content%}
+<div>
+<br>
+{% for error in errors %}
+<h4>{{ error }}</h4>
+{% endfor %}</br>
+</div>
+{% endblock %}
+

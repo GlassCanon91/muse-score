@@ -1,0 +1,17 @@
+{%extends "skeleton.html" %} 
+{%block content%} 
+
+<form method="POST" id="form_url">
+    <input name="text">
+    <input type="submit" value="Submit link musescore" id="submit_button" onclick="redirect_result()">
+</form>
+
+<script>
+function redirect_result() {
+	var url_in= document.getElementById('form_url').text.value
+	window.open('/result?url_input='+url_in);
+}
+</script>
+
+{% endblock %}
+

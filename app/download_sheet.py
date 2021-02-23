@@ -167,9 +167,8 @@ def get_midi_link(url_sheet_in):
 app = Flask(__name__)
 
 @app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                        'favicon.ico',mimetype='image/vnd.microsoft.icon')
+def favicon_up():
+    return app.send_static_file('favicon.ico')
 
 @app.route('/')
 def my_form():
@@ -238,3 +237,5 @@ def downloader():
 if __name__ == "__main__":
     app.run(debug=False)
 
+
+# %%

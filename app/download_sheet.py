@@ -17,7 +17,7 @@ from urllib.parse import urlparse
 from fpdf import FPDF
 from PIL import Image#, ImageTk
 
-from flask import Flask, request, render_template,send_file, make_response,Markup
+from flask import Flask, request, render_template,send_file, make_response,Markup,url_for
 
 def string_after(url_in,sign_in):
     return url_in[url_in.find(sign_in)+len(sign_in):]
@@ -167,8 +167,9 @@ def get_midi_link(url_sheet_in):
 app = Flask(__name__)
 
 @app.route('/favicon.ico')
-def favicon_up():
-    return app.send_static_file('favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                            'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/')
 def my_form():

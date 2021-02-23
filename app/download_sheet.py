@@ -86,7 +86,6 @@ def write_pdf(list_url_pages_in,file_name_in):#,dir_location_in):
         mem_pdf =  io.BytesIO()
         path=urlparse(url).path
         file_name=os.path.split(path)[1]
-        # time.sleep(1)
         with io.BytesIO(s.get(url).content) as open_file:
             #first case is svg type other case is png, ....
             if ".svg" in file_name:
@@ -104,10 +103,6 @@ def write_pdf(list_url_pages_in,file_name_in):#,dir_location_in):
             
         percent_now=float("{:.2f}".format(count/file_numb))*100
         print(f'image to pdf merging : ...{percent_now} %')
-        
-            
-            # print("PDF pages appending... object pdf file :",count)
-    # merger.write(fr'{dir_location}\{file_name_in}.pdf')
     mem_pdf_main =  io.BytesIO()
     merger.write(mem_pdf_main)
     print('PDF file writed. Done! ')
@@ -144,11 +139,8 @@ def get_image_link(url_sheet_in):
         url_page=r_cache.json() ['info']['url']
         url_pages.append(url_page)
         count+=1
-        # print(type(count))
-        # print(type(page_numb))
         percent_now=float("{:.2f}".format(count/page_numb))*100
         print(f'url_image_sheet_getting : ...{percent_now} %')
-        # print("url img got:",file_name,count)
     return url_pages,file_name
 
 def get_mp3_link(url_sheet_in):
@@ -181,23 +173,7 @@ def my_form():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-    try:
-        text = request.form['text']
-        # print('GetImageFile:')
-        # list_url_pages,file_name=get_image_link(text)
-        return render_template('my-form.html')
-        # print('MergingPdfFile:')
-        # pdf_main=write_pdf(list_url_pages,file_name)
-        # response = make_response(pdf_main.read())
-        # response.headers.set('Content-Type', 'pdf')
-        # response.headers.set('Content-Disposition', 'attachment', filename=f'{file_name}.pdf')
-        # return response
-    except:
-        errors=[]
-        errors.append(
-                "Unable to get URL. Please make sure it's valid musescore url and try again."
-            )
-        return render_template('my-form.html')
+    return render_template('my-form.html')
     # return send_file(f'{file_name}.pdf', as_attachment=True)
     
     
@@ -257,5 +233,3 @@ def downloader():
 if __name__ == "__main__":
     app.run(debug=False)
 
-
-#zz

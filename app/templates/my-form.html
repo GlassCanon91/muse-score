@@ -1,0 +1,24 @@
+{%extends "skeleton.html" %} 
+{%block content%} 
+
+<form method="POST" id="form_url">
+    <input name="text">
+    <input type="submit" value="Submit link musescore" id="submit_button" onclick="redirect_result()">
+</form>
+<br></br>
+<br></br>
+<h4>step 1 : find your music sheet you want download from musescore.com and fill url to text box above. Example : </h4>
+<h4>- https://musescore.com/user/31672114/scores/5549686</h4>
+<h4>step 2 : click submit button and get redirect to download page </h4>
+<h4>step 3 : click button to download file type your want PDF/MIDI/MP3</h4>
+<h3>Enjoy</h3>
+
+<script>
+function redirect_result() {
+	var url_in= document.getElementById('form_url').text.value
+	window.open('/result?url_input='+url_in);
+}
+</script>
+
+{% endblock %}
+
